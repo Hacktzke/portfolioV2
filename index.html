@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Jeshua Hertzke" />
+    <meta name="keywords" content="protfolio, web, development, full, stack" />
+    <meta
+      name="description"
+      content="Personal web development portfolio of Jeshua Hertzke"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="images/favicon-16x16.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/5d7df0258e.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="loader">
+      <div class="typing-indicator">
+        <div class="typing-circle"></div>
+        <div class="typing-shadow"></div>
+      </div>
+    </div>
+    <div id="splatter"></div>
+    <div id="contentBlock">
+      <section id="introContent" class="content">
+        <h3 class="heading" id="introTextTag"></h3>
+        <!-- <h3>
+          A Full Stack Developer based in Auckland, New Zealand, who is
+          passionate about code and loves helping online businesses succeed.
+        </h3> -->
+      </section>
+      <section id="aboutContent" class="content">
+        <h2 class="heading">About me</h2>
+        <h3 id="aboutTextTag"></h3>
+        <div class="skills-container">
+          <div class="skill-item">
+            <a href="https://html.com/" target="_blank" rel="noreferrer">
+              <img
+                class="skill-img"
+                src="/images/html-logo.png"
+                alt="Logo of the HTML markup language"
+                width="60px"
+                height="60px"
+                loading="lazy"
+              />
+            </a>
+            <div class="skill-item-shadow"></div>
+          </div>
+          <div class="skill-item">
+            <a
+              href="https://www.w3.org/Style/CSS/Overview.en.html"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                class="skill-img"
+                src="/images/css-logo.png"
+                alt="Logo of the CSS sheet style language"
+                width="60px"
+                height="60px"
+                loading="lazy"
+              />
+            </a>
+            <div class="skill-item-shadow"></div>
+          </div>
+          <div class="skill-item">
+            <a
+              href="https://www.javascript.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                class="skill-img"
+                src="/images/js-logo.png"
+                alt="Logo of the JS programming langauge"
+                width="60px"
+                height="60px"
+                loading="lazy"
+              />
+            </a>
+            <div class="skill-item-shadow"></div>
+          </div>
+          <div class="skill-item">
+            <a
+              href="https://create-react-app.dev/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                class="skill-img"
+                src="/images/react-logo.png"
+                alt="Logo of the React app"
+                width="60px"
+                height="60px"
+                loading="lazy"
+              />
+            </a>
+            <div class="skill-item-shadow"></div>
+          </div>
+          <div class="skill-item">
+            <a href="https://expressjs.com/" target="_blank" rel="noreferrer">
+              <img
+                class="skill-img"
+                src="/images/express-logo.png"
+                alt="Logo of the Express app"
+                width="60px"
+                height="60px"
+                loading="lazy"
+              />
+            </a>
+            <div class="skill-item-shadow"></div>
+          </div>
+          <div class="skill-item">
+            <a href="https://mongoosejs.com/" target="_blank" rel="noreferrer">
+              <img
+                class="skill-img"
+                src="/images/mongoose-logo.png"
+                alt="Logo of the Mongoose app"
+                width="60px"
+                height="60px"
+                loading="lazy"
+              />
+            </a>
+            <div class="skill-item-shadow"></div>
+          </div>
+          <div class="skill-item">
+            <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer">
+              <img
+                class="skill-img"
+                src="/images/mongo-logo.png"
+                alt="Logo of the MongoDB database"
+                width="60px"
+                height="60px"
+                loading="lazy"
+              />
+            </a>
+            <div class="skill-item-shadow"></div>
+          </div>
+          <div class="skill-item">
+            <a href="https://nodejs.org/en/" target="_blank" rel="noreferrer">
+              <img
+                class="skill-img"
+                src="/images/node-logo.png"
+                alt="Logo of the Nodejs engine"
+                width="60px"
+                height="60px"
+                loading="lazy"
+              />
+            </a>
+            <div class="skill-item-shadow"></div>
+          </div>
+        </div>
+        <h3>Resume</h3>
+        <span
+          ><a
+            href="https://drive.google.com/file/d/1AFa_QIvGRa-TMLcD5feIAUiM8yUGpiUL/view?usp=sharing"
+            target="_blank"
+            rel="noreferrer"
+            >View</a
+          >
+          /
+          <a href="/jeshua-hertzke-cv.pdf" download>Download</a></span
+        >
+      </section>
+      <section id="projectsContent" class="content">
+        <h2 class="heading">Recent Projects</h2>
+
+        <div class="projects-wrapper">
+          <a
+            href="https://hertzkars.herokuapp.com/"
+            target="_blank"
+            rel="noreferrer"
+            class="project-icon"
+          >
+            <img
+              src="/images/hertzkars-logo.png"
+              width="150px"
+              alt="Hertzkar's logo"
+              loading="lazy"
+            />
+          </a>
+          <a
+            href="https://www.facebook.com/Tutoraidnz/"
+            target="_blank"
+            rel="noreferrer"
+            class="project-icon"
+          >
+            <img
+              src="/images/tutoraid-logo.png"
+              width="150px"
+              alt="Tutoraid's logo"
+              loading="lazy"
+            />
+          </a>
+          <a
+            href="http://hhaus.co"
+            target="_blank"
+            rel="noreferrer"
+            class="project-icon"
+          >
+            <img
+              src="/images/hhaus-logo.png"
+              width="110px"
+              alt="H.Haus's logo"
+              loading="lazy"
+            />
+          </a>
+        </div>
+        <h3 id="projectsTextTag"></h3>
+
+        <div id="rocketArea">
+          <div>
+            <img
+              id="launchpad"
+              src="/images/launchpad.png"
+              alt="launch pad for space shuttle"
+            />
+          </div>
+          <div id="rocketBox">
+            <img
+              id="rocket"
+              src="/images/rocket-stopped.png"
+              alt="space shuttle"
+              width="70px"
+            />
+          </div>
+          <img id="smoke" src="/images/blank.jpg" alt="blank white image" />
+          <div id="countdownNumber"></div>
+          <div id="countdownText">Click me</div>
+        </div>
+      </section>
+      <section id="contactContent" class="content">
+        <h2 class="heading">Contact</h2>
+        <h3 id="contactTextTag"></h3>
+        <h3 class="jordle-text">
+          Bored? Play
+          <a
+            href="https://hacktzke.github.io/jordle/"
+            target="_blank"
+            rel="noreferrer"
+            >JORDLE</a
+          >
+        </h3>
+        <div class="contact-details">
+          <div class="contact-icon-area">
+            <div class="contact-icon">
+              <a href="mailto:jesh@hertzke.info"
+                ><i class="fa-solid fa-envelope mail-icon"></i
+              ></a>
+            </div>
+            <div class="contact-icon-shadow"></div>
+          </div>
+          <div class="contact-icon-area">
+            <div class="contact-icon">
+              <a
+                href="https://www.linkedin.com/in/jeshua-hertzke-29bb95233/"
+                target="_blank"
+                rel="noreferrer"
+                ><i class="fa-brands fa-linkedin linkedin-icon"></i
+              ></a>
+            </div>
+            <div class="contact-icon-shadow"></div>
+          </div>
+          <div class="contact-icon-area">
+            <div class="contact-icon">
+              <a
+                href="https://github.com/Hacktzke"
+                target="_blank"
+                rel="noreferrer"
+                ><i class="fa-brands fa-github github-icon"></i
+              ></a>
+            </div>
+            <div class="contact-icon-shadow"></div>
+          </div>
+          <div class="contact-icon-area">
+            <div class="contact-icon">
+              <a
+                href="https://goo.gl/maps/6kXfo1GSJxUX96ej6"
+                target="_blank"
+                rel="noreferrer"
+                ><i class="fa-solid fa-location-dot pin-icon"></i
+              ></a>
+            </div>
+            <div class="contact-icon-shadow"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <section id="animationBlock">
+      <div id="characterContainer">
+        <img src="/images/dog-stopped.png" alt="" id="character" />
+      </div>
+
+      <img src="/images/earth.png" id="earth" alt="" />
+    </section>
+
+    <script src="app.js"></script>
+    <script src="rocket-script.js"></script>
+  </body>
+</html>
