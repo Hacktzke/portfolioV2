@@ -133,7 +133,7 @@ addEventListener('resize', resizeEarthAndContent);
 
 const moveCharacter = () => {
   // character.src = '/images/walking2.gif';
-  character.src = '/images/dog.gif';
+  character.src = './images/dog.gif';
   isCharacterMoving = true;
 };
 
@@ -153,7 +153,7 @@ addEventListener('wheel', (e) => {
     clearTimeout(timer);
   }
   timer = setTimeout(function () {
-    character.src = '/images/dog-stopped-2.png';
+    character.src = './images/dog-stopped-2.png';
     isCharacterMoving = false;
   }, 150);
 });
@@ -177,7 +177,7 @@ addEventListener('keydown', (e) => {
     clearTimeout(timer);
   }
   timer = setTimeout(function () {
-    character.src = '/images/dog-stopped.png';
+    character.src = './images/dog-stopped.png';
     isCharacterMoving = false;
   }, 150);
 });
