@@ -101,13 +101,16 @@ body {
   position: fixed;
   left: 50%;
   transform: translate(-50%);
-  top: 60px;
+  top: 0px;
   bottom: 0px;
   width: 100%;
   max-width: 700px;
   transition: opacity 300ms;
   text-align: center;
   z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #contentBlock .heading {
@@ -300,7 +303,6 @@ body {
   height: 100px;
   display: flex;
   justify-content: center;
-  border: 1px solid green;
 }
 
 #rocketBox {
@@ -310,7 +312,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  border: 2px solid blue;
 }
 
 #countdownNumber {
@@ -351,15 +352,17 @@ body {
 
 #splatter {
   position: fixed;
-  /* top: 0; */
-  /* left: 0; */
-  /* left: 50%; */
-  width: 100%;
-  height: 150%;
-  bottom: -50%;
-  right: 0;
+  /* top: -50%; */
+  left: -50%;
+  /* right: -50%; */
+  width: 200%;
+  height: 200%;
+  /* bottom: -50%; */
+  /* right: 0; */
   background-position: center;
-  transition: all 300ms ease-out;
+  transition: all 1s ease-out;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   background-image: url('/images/splatter.png');
   z-index: -1;

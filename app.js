@@ -20,6 +20,7 @@ let degree = 0;
 let contentDegree = 0;
 let isCharacterMoving = false;
 let timer = null;
+let spinSpeed = 2;
 
 const introText = "Hi I'm Jeshua.";
 const aboutText = 'I love tinkering across the whole stack.';
@@ -139,12 +140,12 @@ const moveCharacter = () => {
 addEventListener('wheel', (e) => {
   !isCharacterMoving ? moveCharacter() : '';
   if (e.deltaY < 0) {
-    degree += 2;
-    contentDegree += 2;
+    degree += spinSpeed;
+    contentDegree += spinSpeed;
     character.style.transform = 'scaleX(1)';
   } else {
-    degree -= 2;
-    contentDegree -= 2;
+    degree -= spinSpeed;
+    contentDegree -= spinSpeed;
     character.style.transform = 'scaleX(-1)';
   }
   rotateEarth();
