@@ -158,15 +158,36 @@ addEventListener('wheel', (e) => {
   }, 150);
 });
 
+addEventListener('scroll', (e) => {
+  !isCharacterMoving ? moveCharacter() : '';
+  if (e.deltaY < 0) {
+    degree += spinSpeed;
+    contentDegree += spinSpeed;
+    character.style.transform = 'scaleX(1)';
+  } else {
+    degree -= spinSpeed;
+    contentDegree -= spinSpeed;
+    character.style.transform = 'scaleX(-1)';
+  }
+  rotateEarth();
+  if (timer !== null) {
+    clearTimeout(timer);
+  }
+  timer = setTimeout(function () {
+    character.src = './images/dog-stopped-2.png';
+    isCharacterMoving = false;
+  }, 150);
+});
+
 addEventListener('keydown', (e) => {
   !isCharacterMoving ? moveCharacter() : '';
 
-  if (e.code === 'ArrowDown') {
+  if (e.code === 'ArrowUp') {
     degree += 4;
     contentDegree += 4;
     character.style.transform = 'scaleX(1)';
     rotateEarth();
-  } else if (e.code === 'ArrowUp') {
+  } else if (e.code === 'ArrowDown') {
     degree -= 4;
     contentDegree -= 4;
     character.style.transform = 'scaleX(-1)';
