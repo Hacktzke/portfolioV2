@@ -204,11 +204,12 @@ window.addEventListener('touchstart', function (e) {
 window.addEventListener('touchmove', function (event) {
   // Calculate the distance between the current touch position and the initial touch position
   const currentY = event.touches[0].clientY;
-  const distance = currentY - startY;
-  degree = degree + distance;
+  const direction = currentY - startY;
+  direction > 0 ? (degree += spinSpeed) : (degree -= spinSpeed);
+  //   Code below slow the scrolling down
+  //   distance / 3;
+  //   degree = degree + distance;
   rotateEarth();
-
-  // Rotate the element based on the distance
 });
 
 addEventListener('keydown', (e) => {
