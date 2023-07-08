@@ -175,7 +175,6 @@ addEventListener('wheel', (e) => {
 });
 
 addEventListener('scroll', (e) => {
-  alert('scrolling');
   !isCharacterMoving ? moveCharacter() : '';
   if (e.deltaY < 0) {
     degree += spinSpeed;
@@ -191,9 +190,25 @@ addEventListener('scroll', (e) => {
     clearTimeout(timer);
   }
   timer = setTimeout(function () {
-    character.src = './images/dog-stopped-2.png';
+    character.src = './images/dog-stopped.png';
     isCharacterMoving = false;
   }, 150);
+});
+
+let startY;
+
+window.addEventListener('touchstart', function (e) {
+  startY = e.touches[0].clientY;
+});
+
+window.addEventListener('touchmove', function (event) {
+  // Calculate the distance between the current touch position and the initial touch position
+  const currentY = event.touches[0].clientY;
+  const distance = currentY - startY;
+  degree = degree + distance;
+  rotateEarth();
+
+  // Rotate the element based on the distance
 });
 
 addEventListener('keydown', (e) => {
