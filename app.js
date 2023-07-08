@@ -21,6 +21,7 @@ let contentDegree = 0;
 let isCharacterMoving = false;
 let timer = null;
 let spinSpeed = 2;
+let frame = 1;
 
 const introText = "Hi I'm Jeshua.";
 const aboutText = 'I love tinkering across the whole stack.';
@@ -138,7 +139,9 @@ const moveCharacter = () => {
 };
 
 addEventListener('wheel', (e) => {
-  !isCharacterMoving ? moveCharacter() : '';
+  character.src = `.images/dog${frame}.png`;
+  frame === 10 ? (frame = 1) : frame++;
+  //   !isCharacterMoving ? moveCharacter() : '';
   if (e.deltaY < 0) {
     degree += spinSpeed;
     contentDegree += spinSpeed;
