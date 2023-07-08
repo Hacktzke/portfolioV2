@@ -283,8 +283,6 @@ body {
   z-index: 20;
 }
 #character {
-  /* width: 100%; */
-  /* max-width: var(--character-max-width); */
   transition: transform 300ms;
   transform: scaleX(-1);
 }
@@ -339,7 +337,6 @@ body {
 }
 
 #smoke {
-  /* position: absolute; */
   margin-top: 50px;
   width: 200px;
 }
@@ -347,24 +344,21 @@ body {
 #launchpad {
   position: absolute;
   width: 95px;
-  /* left: 70px; */
   opacity: 0.8;
 }
 
 #splatter {
   position: fixed;
-  /* top: -50%; */
+  /* left: -500%; */
   left: -50%;
-  /* right: -50%; */
+  /* width: 400%; */
   width: 200%;
   height: 200%;
-  /* bottom: -50%; */
-  /* right: 0; */
+  /* height: 400%; */
   background-position: center;
   transition: all 1s ease-out;
   background-repeat: no-repeat;
   background-size: cover;
-
   background-image: url('./images/bg1.png');
   z-index: -1;
 }

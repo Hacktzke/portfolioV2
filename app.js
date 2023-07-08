@@ -108,6 +108,18 @@ const checkContentDegree = () => {
   }
 };
 
+const resizeSplatterBg = () => {
+  if (window.innerHeight > window.innerWidth) {
+    splatter.style.width = `${window.innerHeight * 2}px`;
+    splatter.style.left = `-${window.innerHeight - window.innerWidth / 2}px`;
+  } else {
+    splatter.style.width = `${window.innerWidth * 2}px`;
+    splatter.style.left = `-50%`;
+
+    console.log('WIDE');
+  }
+};
+
 const resizeEarthAndContent = () => {
   checkContentDegree();
   animationBlock.style.bottom = `-${
@@ -120,6 +132,7 @@ const resizeEarthAndContent = () => {
     parseInt(getComputedStyle(earth).width) / 1.39
   }px`;
   character.style.width = `${parseInt(getComputedStyle(earth).width) / 5}px`;
+  resizeSplatterBg();
 };
 
 // Sizing Listeners
@@ -139,9 +152,9 @@ const moveCharacter = () => {
 };
 
 addEventListener('wheel', (e) => {
-  character.src = `.images/dog${frame}.png`;
-  frame === 10 ? (frame = 1) : frame++;
-  //   !isCharacterMoving ? moveCharacter() : '';
+  //   character.src = `./images/dog-${frame}.png`;
+  //   frame === 10 ? (frame = 1) : frame++;
+  !isCharacterMoving ? moveCharacter() : '';
   if (e.deltaY < 0) {
     degree += spinSpeed;
     contentDegree += spinSpeed;
@@ -156,9 +169,9 @@ addEventListener('wheel', (e) => {
     clearTimeout(timer);
   }
   timer = setTimeout(function () {
-    character.src = './images/dog-stopped-2.png';
+    character.src = './images/dog-stopped.png';
     isCharacterMoving = false;
-  }, 150);
+  }, 300);
 });
 
 addEventListener('scroll', (e) => {
