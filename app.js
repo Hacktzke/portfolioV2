@@ -175,6 +175,7 @@ addEventListener('wheel', (e) => {
 });
 
 addEventListener('scroll', (e) => {
+  alert('scrolling');
   !isCharacterMoving ? moveCharacter() : '';
   if (e.deltaY < 0) {
     degree += spinSpeed;
