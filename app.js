@@ -13,9 +13,9 @@ const animationBlock = document.querySelector('#animationBlock');
 const character = document.querySelector('#character');
 const characterContainer = document.querySelector('#characterContainer');
 const earth = document.querySelector('#earth');
-
 const splatter = document.querySelector('#splatter');
 
+const maxEarthWidth = 700;
 let degree = 0;
 let contentDegree = 0;
 let isCharacterMoving = false;
@@ -113,23 +113,27 @@ const resizeSplatterBg = () => {
   } else {
     splatter.style.width = `${window.innerWidth * 2}px`;
     splatter.style.left = `-50%`;
-
-    console.log('WIDE');
   }
 };
 
 const resizeEarthAndContent = () => {
   checkContentDegree();
+  if (window.innerHeight < maxEarthWidth) {
+    animationBlock.style.maxWidth = `${window.innerHeight}px`;
+  } else {
+    animationBlock.style.maxWidth = `${maxEarthWidth}px`;
+  }
   animationBlock.style.bottom = `-${
-    parseInt(getComputedStyle(earth).width) / 2 + 4
+    parseInt(getComputedStyle(earth).width) / 2 + 5
   }px`;
   contentBlock.style.bottom = `${
-    parseInt(getComputedStyle(earth).width) / 2 + 4
+    parseInt(getComputedStyle(earth).width) / 2 + 5
   }px`;
   characterContainer.style.bottom = `${
     parseInt(getComputedStyle(earth).width) / 1.39
   }px`;
   character.style.width = `${parseInt(getComputedStyle(earth).width) / 5}px`;
+
   resizeSplatterBg();
 };
 
