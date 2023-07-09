@@ -39,6 +39,8 @@ const removeLoader = () => {
   }, 300);
 };
 
+// Text content functions
+
 const generateText = (contentArea, text) => {
   contentArea.textContent = '';
   typeWriter(contentArea, text);
@@ -58,12 +60,6 @@ const typeWriter = (contentTag, text) => {
   contentTag.isTyped = true;
 };
 
-const rotateEarth = () => {
-  earth.style.transform = `rotate(${degree}deg)`;
-  splatter.style.transform = `rotate(${degree}deg)`;
-  checkContentDegree();
-};
-
 const toggleContent = (selectedContent) => {
   contentBlock.style.opacity = '1';
   introContent.style.display = 'none';
@@ -74,7 +70,6 @@ const toggleContent = (selectedContent) => {
 };
 
 const checkContentDegree = () => {
-  console.log(contentDegree);
   if (contentDegree === 360 || contentDegree === -360) {
     contentDegree = 0;
   }
@@ -109,6 +104,8 @@ const checkContentDegree = () => {
   }
 };
 
+// Resizing functions
+
 const resizeSplatterBg = () => {
   if (window.innerHeight > window.innerWidth) {
     splatter.style.width = `${window.innerHeight * 2}px`;
@@ -136,7 +133,31 @@ const resizeEarthAndContent = () => {
   resizeSplatterBg();
 };
 
-// Sizing Listeners
+// Character and spinning animation functions
+
+const rotateEarth = () => {
+  earth.style.transform = `rotate(${degree}deg)`;
+  splatter.style.transform = `rotate(${degree}deg)`;
+  checkContentDegree();
+};
+
+const moveCharacter = () => {
+  character.src = './images/dog.gif';
+  isCharacterMoving = true;
+};
+
+const checkCharacterStopped = () => {
+  if (timer !== null) {
+    clearTimeout(timer);
+  }
+  timer = setTimeout(function () {
+    character.src = './images/dog-stopped.png';
+    isCharacterMoving = false;
+  }, 150);
+};
+
+// Earth Rotation Listeners
+
 addEventListener('load', () => {
   removeLoader();
   resizeEarthAndContent();
@@ -144,17 +165,7 @@ addEventListener('load', () => {
 
 addEventListener('resize', resizeEarthAndContent);
 
-// Earth Rotation Listeners
-
-const moveCharacter = () => {
-  // character.src = '/images/walking2.gif';
-  character.src = './images/dog.gif';
-  isCharacterMoving = true;
-};
-
 addEventListener('wheel', (e) => {
-  //   character.src = `./images/dog-${frame}.png`;
-  //   frame === 10 ? (frame = 1) : frame++;
   !isCharacterMoving ? moveCharacter() : '';
   if (e.deltaY < 0) {
     degree += spinSpeed;
@@ -166,13 +177,7 @@ addEventListener('wheel', (e) => {
     character.style.transform = 'scaleX(-1)';
   }
   rotateEarth();
-  if (timer !== null) {
-    clearTimeout(timer);
-  }
-  timer = setTimeout(function () {
-    character.src = './images/dog-stopped.png';
-    isCharacterMoving = false;
-  }, 300);
+  checkCharacterStopped();
 });
 
 addEventListener('scroll', (e) => {
@@ -187,35 +192,23 @@ addEventListener('scroll', (e) => {
     character.style.transform = 'scaleX(-1)';
   }
   rotateEarth();
-  if (timer !== null) {
-    clearTimeout(timer);
-  }
-  timer = setTimeout(function () {
-    character.src = './images/dog-stopped.png';
-    isCharacterMoving = false;
-  }, 150);
+  checkCharacterStopped();
 });
 
-// let startY;
-
-// window.addEventListener('touchstart', function (e) {
-//   startY = e.touches[0].clientY;
-// });
-
 window.addEventListener('touchmove', function (event) {
-  // Calculate the distance between the current touch position and the initial touch position
-  //   const currentY = event.touches[0].clientY;
-  //   const direction = currentY - startY;
-
-  //   direction > 0 ? (degree += spinSpeed) : (degree -= spinSpeed);
-  currentTouchPos > event.touches[0].clientY
-    ? (degree += spinSpeed)
-    : (degree -= spinSpeed);
+  !isCharacterMoving ? moveCharacter() : '';
+  if (currentTouchPos > event.touches[0].clientY) {
+    degree += spinSpeed;
+    contentDegree += spinSpeed;
+    character.style.transform = 'scaleX(1)';
+  } else {
+    degree -= spinSpeed;
+    contentDegree -= spinSpeed;
+    character.style.transform = 'scaleX(-1)';
+  }
   currentTouchPos = event.touches[0].clientY;
-  //   Code below slow the scrolling down
-  //   distance / 3;
-  //   degree = degree + distance;
   rotateEarth();
+  checkCharacterStopped();
 });
 
 addEventListener('keydown', (e) => {
@@ -225,19 +218,11 @@ addEventListener('keydown', (e) => {
     degree += 4;
     contentDegree += 4;
     character.style.transform = 'scaleX(1)';
-    rotateEarth();
   } else if (e.code === 'ArrowDown') {
     degree -= 4;
     contentDegree -= 4;
     character.style.transform = 'scaleX(-1)';
-
-    rotateEarth();
   }
-  if (timer !== null) {
-    clearTimeout(timer);
-  }
-  timer = setTimeout(function () {
-    character.src = './images/dog-stopped.png';
-    isCharacterMoving = false;
-  }, 150);
+  rotateEarth();
+  checkCharacterStopped();
 });
