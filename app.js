@@ -22,6 +22,7 @@ let isCharacterMoving = false;
 let timer = null;
 let spinSpeed = 2;
 let frame = 1;
+let currentTouchPos;
 
 const introText = "Hi I'm Jeshua.";
 const aboutText = 'I love tinkering across the whole stack.';
@@ -195,17 +196,21 @@ addEventListener('scroll', (e) => {
   }, 150);
 });
 
-let startY;
+// let startY;
 
-window.addEventListener('touchstart', function (e) {
-  startY = e.touches[0].clientY;
-});
+// window.addEventListener('touchstart', function (e) {
+//   startY = e.touches[0].clientY;
+// });
 
 window.addEventListener('touchmove', function (event) {
   // Calculate the distance between the current touch position and the initial touch position
-  const currentY = event.touches[0].clientY;
-  const direction = currentY - startY;
-  direction > 0 ? (degree += spinSpeed) : (degree -= spinSpeed);
+  //   const currentY = event.touches[0].clientY;
+  //   const direction = currentY - startY;
+
+  //   direction > 0 ? (degree += spinSpeed) : (degree -= spinSpeed);
+  currentTouchPos > event.touches[0].clientY
+    ? (degree += spinSpeed)
+    : (degree -= spinSpeed);
   //   Code below slow the scrolling down
   //   distance / 3;
   //   degree = degree + distance;
