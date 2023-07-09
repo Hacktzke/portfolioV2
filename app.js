@@ -211,6 +211,7 @@ window.addEventListener('touchmove', function (event) {
   currentTouchPos > event.touches[0].clientY
     ? (degree += spinSpeed)
     : (degree -= spinSpeed);
+  currentTouchPos = event.touches[0].clientY;
   //   Code below slow the scrolling down
   //   distance / 3;
   //   degree = degree + distance;
