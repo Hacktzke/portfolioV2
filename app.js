@@ -15,7 +15,10 @@ const characterContainer = document.querySelector('#characterContainer');
 const earth = document.querySelector('#earth');
 const splatter = document.querySelector('#splatter');
 
+const profileImg = document.querySelector('#profileImg');
+
 const maxEarthWidth = 700;
+let isRainbow = false;
 let degree = 0;
 let contentDegree = 0;
 let isCharacterMoving = false;
@@ -43,8 +46,24 @@ const removeLoader = () => {
 
 const generateText = (contentArea, text) => {
   contentArea.textContent = '';
-  typeWriter(contentArea, text);
+  setTimeout(() => {
+    typeWriter(contentArea, text);
+  }, 1000);
 };
+
+// const typeWriter = (contentTag, text) => {
+//   let textIndex = 0;
+//   function type() {
+//     contentTag.textContent += text.charAt(textIndex);
+//     textIndex++;
+//     if (textIndex < text.length) {
+//       setTimeout(type, 25);
+//     } else {
+//     }
+//   }
+//   type();
+//   contentTag.isTyped = true;
+// };
 
 const typeWriter = (contentTag, text) => {
   let textIndex = 0;
@@ -56,7 +75,9 @@ const typeWriter = (contentTag, text) => {
     } else {
     }
   }
-  type();
+  setTimeout(() => {
+    type();
+  }, 300);
   contentTag.isTyped = true;
 };
 
@@ -67,6 +88,7 @@ const toggleContent = (selectedContent) => {
   projectsContent.style.display = 'none';
   contactContent.style.display = 'none';
   selectedContent.style.display = 'block';
+  profileImg.src = './images/profile.gif';
 };
 
 const checkContentDegree = () => {
@@ -133,7 +155,6 @@ const resizeEarthAndContent = () => {
     parseInt(getComputedStyle(earth).width) / 1.39
   }px`;
   character.style.width = `${parseInt(getComputedStyle(earth).width) / 5}px`;
-
   resizeSplatterBg();
 };
 
@@ -146,7 +167,9 @@ const rotateEarth = () => {
 };
 
 const moveCharacter = () => {
-  character.src = './images/dog.gif';
+  isRainbow
+    ? (character.src = './images/dog-rainbow.gif')
+    : (character.src = './images/dog.gif');
   isCharacterMoving = true;
 };
 
@@ -155,7 +178,9 @@ const checkCharacterStopped = () => {
     clearTimeout(timer);
   }
   timer = setTimeout(function () {
-    character.src = './images/dog-stopped.png';
+    isRainbow
+      ? (character.src = './images/dog-rainbow-stopped.png')
+      : (character.src = './images/dog-stopped.png');
     isCharacterMoving = false;
   }, 150);
 };
@@ -201,7 +226,7 @@ addEventListener('scroll', (e) => {
 
 window.addEventListener('touchmove', function (event) {
   !isCharacterMoving ? moveCharacter() : '';
-  if (currentTouchPos > event.touches[0].clientY) {
+  if (currentTouchPos < event.touches[0].clientY) {
     degree += spinSpeed;
     contentDegree += spinSpeed;
     character.style.transform = 'scaleX(1)';
@@ -229,4 +254,11 @@ addEventListener('keydown', (e) => {
   }
   rotateEarth();
   checkCharacterStopped();
+});
+
+character.addEventListener('click', () => {
+  isRainbow = !isRainbow;
+  isRainbow
+    ? (character.src = './images/dog-rainbow-stopped2.png')
+    : (character.src = './images/dog-stopped.png');
 });

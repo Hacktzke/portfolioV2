@@ -116,10 +116,21 @@ body {
   /* font-size: 26px; */
 }
 
+#contentBlock .typewriter-text {
+  min-height: 18px;
+}
+
+#contentBlock .content {
+  margin: 0 20px;
+}
+
 #introContent {
   /* display: none; */
 }
 
+#introContent #profileImg {
+  width: 150px;
+}
 #aboutContent {
   /* display: none; */
 }
@@ -281,6 +292,8 @@ body {
   z-index: 20;
 }
 #character {
+  /* width: 3px; */
+
   transition: transform 300ms;
   transform: scaleX(-1);
 }
