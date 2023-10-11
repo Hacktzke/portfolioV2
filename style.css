@@ -325,4 +325,38 @@ body {
   #projectsContent .projects-wrapper {
     flex-direction: column;
   }
+
+  #aboutContent .skill-img {
+    width: 30px;
+    height: 30px;
+  }
+
+  #aboutContent .skill-item-shadow {
+    width: 40px;
+    bottom: 0px;
+  }
+
+  #contactContent .contact-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  #contactContent .contact-icon i {
+    font-size: 1rem;
+  }
+
+  #contactContent .contact-icon-shadow {
+    width: 60px;
+  }
+
+  #projectsContent .project-icon img {
+    width: 110px;
+  }
+  #projectsContent .project-icon .project-img-hhaus {
+    width: 90px;
+  }
+
+  #introContent #profileImg {
+    width: 120px;
+  }
 }
