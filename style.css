@@ -120,6 +120,8 @@ body {
 
 #contentBlock .typewriter-text {
   min-height: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 #contentBlock .content {
@@ -127,7 +129,7 @@ body {
 }
 
 #introContent .intro-text {
-  /* display: none; */
+  margin: 0 5px;
 }
 
 #introContent #profileImg {

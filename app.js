@@ -124,8 +124,11 @@ const resizeSplatterBg = () => {
 
 const resizeEarthAndContent = () => {
   checkContentDegree();
+
+  animationBlock.style.display = window.innerHeight < 500 ? 'none' : 'block';
+
   if (window.innerHeight < maxEarthWidth) {
-    animationBlock.style.maxWidth = `${window.innerHeight}px`;
+    animationBlock.style.maxWidth = `${window.innerHeight / 1.5}px`;
   } else {
     animationBlock.style.maxWidth = `${maxEarthWidth}px`;
   }
@@ -227,22 +230,29 @@ window.addEventListener('touchmove', function (event) {
 addEventListener('keydown', (e) => {
   if (e.code === 'ArrowUp') {
     !isCharacterMoving ? moveCharacter() : '';
-    degree += 4;
-    contentDegree += 4;
+    degree += 6;
+    contentDegree += 6;
     character.style.transform = 'scaleX(1)';
   } else if (e.code === 'ArrowDown') {
     !isCharacterMoving ? moveCharacter() : '';
-    degree -= 4;
-    contentDegree -= 4;
+    degree -= 6;
+    contentDegree -= 6;
     character.style.transform = 'scaleX(-1)';
   }
   rotateEarth();
+});
+
+addEventListener('keyup', () => {
   checkCharacterStopped();
 });
 
 character.addEventListener('click', () => {
   isRainbow = !isRainbow;
-  isRainbow
-    ? (character.src = './images/dog-rainbow-stopped2.png')
-    : (character.src = './images/dog-stopped.png');
+  if (isRainbow) {
+    character.src = './images/dog-rainbow-stopped.png';
+    character.style.paddingBottom = '3%';
+  } else {
+    character.src = './images/dog-stopped.png';
+    character.style.paddingBottom = '0px';
+  }
 });
