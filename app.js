@@ -178,6 +178,10 @@ addEventListener('load', () => {
   resizeEarthAndContent();
 });
 
+profileImg.addEventListener('click', () => {
+  profileImg.src = './images/profile.gif';
+});
+
 addEventListener('resize', resizeEarthAndContent);
 
 addEventListener('wheel', (e) => {
@@ -210,28 +214,66 @@ addEventListener('scroll', (e) => {
   checkCharacterStopped();
 });
 
+// window.addEventListener('touchmove', function (event) {
+//   !isCharacterMoving ? moveCharacter() : '';
+
+//   // Calculate the change in both horizontal and vertical positions
+//   const deltaX = event.touches[0].clientX - currentTouchPos.x;
+//   const deltaY = event.touches[0].clientY - currentTouchPos.y;
+
+//   if (Math.abs(deltaX) > Math.abs(deltaY)) {
+//     // Horizontal swipe detected
+//     if (deltaX > 0) {
+//       // User swiped to the right
+//       degree += spinSpeed;
+//       contentDegree += spinSpeed;
+//       character.style.transform = 'scaleX(1)';
+//     } else {
+//       // User swiped to the left
+//       degree -= spinSpeed;
+//       contentDegree -= spinSpeed;
+//       character.style.transform = 'scaleX(-1)';
+//     }
+//   } else {
+//     // Vertical swipe detected
+//     if (deltaY > 0) {
+//       degree += spinSpeed;
+//       contentDegree += spinSpeed;
+//       character.style.transform = 'scaleX(1)';
+//     } else {
+//       degree -= spinSpeed;
+//       contentDegree -= spinSpeed;
+//       character.style.transform = 'scaleX(-1)';
+//     }
+//   }
+
+//   currentTouchPos.x = event.touches[0].clientX;
+//   currentTouchPos.y = event.touches[0].clientY;
+
+//   rotateEarth();
+//   checkCharacterStopped();
+// });
+
+// let currentTouchPos = { x: 0, y: 0 };
+let rotationSpeed = 0; // Initialize the rotation speed
+
 window.addEventListener('touchmove', function (event) {
   !isCharacterMoving ? moveCharacter() : '';
 
-  // Calculate the change in both horizontal and vertical positions
   const deltaX = event.touches[0].clientX - currentTouchPos.x;
   const deltaY = event.touches[0].clientY - currentTouchPos.y;
 
   if (Math.abs(deltaX) > Math.abs(deltaY)) {
-    // Horizontal swipe detected
     if (deltaX > 0) {
-      // User swiped to the right
       degree += spinSpeed;
       contentDegree += spinSpeed;
       character.style.transform = 'scaleX(1)';
     } else {
-      // User swiped to the left
       degree -= spinSpeed;
       contentDegree -= spinSpeed;
       character.style.transform = 'scaleX(-1)';
     }
   } else {
-    // Vertical swipe detected
     if (deltaY > 0) {
       degree += spinSpeed;
       contentDegree += spinSpeed;
@@ -248,6 +290,27 @@ window.addEventListener('touchmove', function (event) {
 
   rotateEarth();
   checkCharacterStopped();
+
+  // Update the rotation speed based on the swipe
+  rotationSpeed = deltaX / 10; // You can adjust the factor for the speed reduction
+});
+
+// Function to gradually slow down the rotation
+function slowDownRotation() {
+  if (Math.abs(rotationSpeed) > 0.1) {
+    // Continue rotating slowly until the speed is negligible
+    degree += rotationSpeed;
+    contentDegree += rotationSpeed;
+    character.style.transform = rotationSpeed > 0 ? 'scaleX(1)' : 'scaleX(-1)';
+    rotateEarth();
+    rotationSpeed *= 0.95; // You can adjust the factor for speed reduction
+    requestAnimationFrame(slowDownRotation);
+  }
+}
+
+// Add a touchend event listener to trigger the slowing down of rotation
+window.addEventListener('touchend', function () {
+  slowDownRotation();
 });
 
 addEventListener('keydown', (e) => {
