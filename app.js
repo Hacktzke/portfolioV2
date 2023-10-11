@@ -72,7 +72,6 @@ const toggleContent = (selectedContent) => {
   projectsContent.style.display = 'none';
   contactContent.style.display = 'none';
   selectedContent.style.display = 'block';
-  // profileImg.src = './images/profile.gif';
 };
 
 const checkContentDegree = () => {
