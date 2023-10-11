@@ -24,7 +24,7 @@ let contentDegree = 0;
 let isCharacterMoving = false;
 let timer = null;
 let spinSpeed = 2;
-let currentTouchPos;
+// let currentTouchPos;
 
 const introText = "Hi I'm Jeshua.";
 const aboutText = 'I love tinkering across the whole stack.';
@@ -210,18 +210,60 @@ addEventListener('scroll', (e) => {
   checkCharacterStopped();
 });
 
+// window.addEventListener('touchmove', function (event) {
+//   !isCharacterMoving ? moveCharacter() : '';
+//   if (currentTouchPos < event.touches[0].clientY) {
+//     degree += spinSpeed;
+//     contentDegree += spinSpeed;
+//     character.style.transform = 'scaleX(1)';
+//   } else {
+//     degree -= spinSpeed;
+//     contentDegree -= spinSpeed;
+//     character.style.transform = 'scaleX(-1)';
+//   }
+//   currentTouchPos = event.touches[0].clientY;
+//   rotateEarth();
+//   checkCharacterStopped();
+// });
+
+let currentTouchPos = { x: 0, y: 0 }; // Initialize the current touch position
+
 window.addEventListener('touchmove', function (event) {
   !isCharacterMoving ? moveCharacter() : '';
-  if (currentTouchPos < event.touches[0].clientY) {
-    degree += spinSpeed;
-    contentDegree += spinSpeed;
-    character.style.transform = 'scaleX(1)';
+
+  // Calculate the change in both horizontal and vertical positions
+  const deltaX = event.touches[0].clientX - currentTouchPos.x;
+  const deltaY = event.touches[0].clientY - currentTouchPos.y;
+
+  if (Math.abs(deltaX) > Math.abs(deltaY)) {
+    // Horizontal swipe detected
+    if (deltaX > 0) {
+      // User swiped to the right
+      degree += spinSpeed;
+      contentDegree += spinSpeed;
+      character.style.transform = 'scaleX(1)';
+    } else {
+      // User swiped to the left
+      degree -= spinSpeed;
+      contentDegree -= spinSpeed;
+      character.style.transform = 'scaleX(-1)';
+    }
   } else {
-    degree -= spinSpeed;
-    contentDegree -= spinSpeed;
-    character.style.transform = 'scaleX(-1)';
+    // Vertical swipe detected
+    if (deltaY > 0) {
+      degree += spinSpeed;
+      contentDegree += spinSpeed;
+      character.style.transform = 'scaleX(1)';
+    } else {
+      degree -= spinSpeed;
+      contentDegree -= spinSpeed;
+      character.style.transform = 'scaleX(-1)';
+    }
   }
-  currentTouchPos = event.touches[0].clientY;
+
+  currentTouchPos.x = event.touches[0].clientX;
+  currentTouchPos.y = event.touches[0].clientY;
+
   rotateEarth();
   checkCharacterStopped();
 });
