@@ -214,46 +214,6 @@ addEventListener('scroll', (e) => {
   checkCharacterStopped();
 });
 
-window.addEventListener('touchmove', function (event) {
-  !isCharacterMoving ? moveCharacter() : '';
-
-  // Calculate the change in both horizontal and vertical positions
-  const deltaX = event.touches[0].clientX - currentTouchPos.x;
-  const deltaY = event.touches[0].clientY - currentTouchPos.y;
-
-  if (Math.abs(deltaX) > Math.abs(deltaY)) {
-    // Horizontal swipe detected
-    if (deltaX > 0) {
-      // User swiped to the right
-      degree += 4;
-      contentDegree += 4;
-      character.style.transform = 'scaleX(1)';
-    } else {
-      // User swiped to the left
-      degree -= 4;
-      contentDegree -= 4;
-      character.style.transform = 'scaleX(-1)';
-    }
-  } else {
-    // Vertical swipe detected
-    if (deltaY > 0) {
-      degree += 4;
-      contentDegree += 4;
-      character.style.transform = 'scaleX(1)';
-    } else {
-      degree -= 4;
-      contentDegree -= 4;
-      character.style.transform = 'scaleX(-1)';
-    }
-  }
-
-  currentTouchPos.x = event.touches[0].clientX;
-  currentTouchPos.y = event.touches[0].clientY;
-
-  rotateEarth();
-  checkCharacterStopped();
-});
-
 addEventListener('keydown', (e) => {
   if (e.code === 'ArrowUp') {
     !isCharacterMoving ? moveCharacter() : '';
@@ -270,6 +230,46 @@ addEventListener('keydown', (e) => {
 });
 
 addEventListener('keyup', () => {
+  checkCharacterStopped();
+});
+
+window.addEventListener('touchmove', function (event) {
+  !isCharacterMoving ? moveCharacter() : '';
+
+  // Calculate the change in both horizontal and vertical positions
+  const deltaX = event.touches[0].clientX - currentTouchPos.x;
+  const deltaY = event.touches[0].clientY - currentTouchPos.y;
+
+  if (Math.abs(deltaX) > Math.abs(deltaY)) {
+    // Horizontal swipe detected
+    if (deltaX > 0) {
+      // User swiped to the right
+      degree += spinSpeed;
+      contentDegree += spinSpeed;
+      character.style.transform = 'scaleX(1)';
+    } else {
+      // User swiped to the left
+      degree -= spinSpeed;
+      contentDegree -= spinSpeed;
+      character.style.transform = 'scaleX(-1)';
+    }
+  } else {
+    // Vertical swipe detected
+    if (deltaY > 0) {
+      degree += spinSpeed;
+      contentDegree += spinSpeed;
+      character.style.transform = 'scaleX(1)';
+    } else {
+      degree -= spinSpeed;
+      contentDegree -= spinSpeed;
+      character.style.transform = 'scaleX(-1)';
+    }
+  }
+
+  currentTouchPos.x = event.touches[0].clientX;
+  currentTouchPos.y = event.touches[0].clientY;
+
+  rotateEarth();
   checkCharacterStopped();
 });
 
