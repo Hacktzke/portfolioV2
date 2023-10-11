@@ -327,18 +327,18 @@ body {
   }
 
   #aboutContent .skill-img {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
   }
 
   #aboutContent .skill-item-shadow {
-    width: 40px;
-    bottom: 0px;
+    /* width: 40px; */
+    bottom: -5px;
   }
 
   #contactContent .contact-icon {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
   }
 
   #contactContent .contact-icon i {
@@ -346,14 +346,14 @@ body {
   }
 
   #contactContent .contact-icon-shadow {
-    width: 60px;
+    /* width: 60px; */
   }
 
   #projectsContent .project-icon img {
-    width: 110px;
+    /* width: 110px; */
   }
   #projectsContent .project-icon .project-img-hhaus {
-    width: 90px;
+    /* width: 90px; */
   }
 
   #introContent #profileImg {

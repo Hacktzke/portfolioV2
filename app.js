@@ -24,7 +24,7 @@ let contentDegree = 0;
 let isCharacterMoving = false;
 let timer = null;
 let spinSpeed = 2;
-// let currentTouchPos;
+let currentTouchPos = { x: 0, y: 0 }; // Initialize the current touch position
 
 const introText = "Hi I'm Jeshua.";
 const aboutText = 'I love tinkering across the whole stack.';
@@ -209,24 +209,6 @@ addEventListener('scroll', (e) => {
   rotateEarth();
   checkCharacterStopped();
 });
-
-// window.addEventListener('touchmove', function (event) {
-//   !isCharacterMoving ? moveCharacter() : '';
-//   if (currentTouchPos < event.touches[0].clientY) {
-//     degree += spinSpeed;
-//     contentDegree += spinSpeed;
-//     character.style.transform = 'scaleX(1)';
-//   } else {
-//     degree -= spinSpeed;
-//     contentDegree -= spinSpeed;
-//     character.style.transform = 'scaleX(-1)';
-//   }
-//   currentTouchPos = event.touches[0].clientY;
-//   rotateEarth();
-//   checkCharacterStopped();
-// });
-
-let currentTouchPos = { x: 0, y: 0 }; // Initialize the current touch position
 
 window.addEventListener('touchmove', function (event) {
   !isCharacterMoving ? moveCharacter() : '';
