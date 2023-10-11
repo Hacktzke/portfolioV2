@@ -40,7 +40,7 @@
       src="https://kit.fontawesome.com/5d7df0258e.js"
       crossorigin="anonymous"
     ></script>
-    <title>Document</title>
+    <title>Jeshua Hertzke' Portfolio</title>
   </head>
   <body>
     <div class="loader">
@@ -52,12 +52,10 @@
     <div id="splatter"></div>
     <div id="contentBlock">
       <section id="introContent" class="content">
-        <h3 class="heading typewriter-text" id="introTextTag"></h3>
+        <h1 class="heading typewriter-text" id="introTextTag"></h1>
         <img src="./images/profile.gif" id="profileImg" alt="" />
-
-        <h3>
-          A Full Stack Developer based in Auckland, New Zealand, who is
-          passionate about code and loves helping online businesses succeed.
+        <h3 class="intro-text">
+          A Full Stack Developer based in Auckland, New Zealand.
         </h3>
       </section>
       <section id="aboutContent" class="content">
@@ -180,6 +178,23 @@
             </a>
             <div class="skill-item-shadow"></div>
           </div>
+          <div class="skill-item">
+            <a
+              href="https://www.outsystems.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                class="skill-img"
+                src="./images/outsystems-logo.png"
+                alt="Logo of OutSystems"
+                width="60px"
+                height="60px"
+                loading="lazy"
+              />
+            </a>
+            <div class="skill-item-shadow"></div>
+          </div>
         </div>
         <h3>Resume</h3>
         <span
@@ -205,8 +220,8 @@
           >
             <img
               src="./images/hertzkars-logo.png"
-              width="150px"
               alt="Hertzkar's logo"
+              width="160px"
               loading="lazy"
             />
           </a>
@@ -218,9 +233,10 @@
           >
             <img
               src="./images/tutoraid-logo.png"
-              width="150px"
+              width="160px"
               alt="Tutoraid's logo"
               loading="lazy"
+              class="project-img"
             />
           </a>
           <a
@@ -231,47 +247,18 @@
           >
             <img
               src="./images/hhaus-logo.png"
-              width="110px"
+              width="120px"
               alt="H.Haus's logo"
               loading="lazy"
+              class="project-img-hhaus"
             />
           </a>
         </div>
         <h3 id="projectsTextTag" class="typewriter-text"></h3>
-
-        <div id="rocketArea">
-          <div>
-            <img
-              id="launchpad"
-              src="./images/launchpad.png"
-              alt="launch pad for space shuttle"
-            />
-          </div>
-          <div id="rocketBox">
-            <img
-              id="rocket"
-              src="./images/rocket-stopped.png"
-              alt="space shuttle"
-              width="70px"
-            />
-          </div>
-          <img id="smoke" src="./images/blank.jpg" alt="blank white image" />
-          <div id="countdownNumber"></div>
-          <div id="countdownText">Click me</div>
-        </div>
       </section>
       <section id="contactContent" class="content">
         <h2 class="heading">Contact</h2>
         <h3 id="contactTextTag" class="typewriter-text"></h3>
-        <h3 class="jordle-text">
-          Bored? Play
-          <a
-            href="https://hacktzke.github.io/jordle/"
-            target="_blank"
-            rel="noreferrer"
-            >JORDLE</a
-          >
-        </h3>
         <div class="contact-details">
           <div class="contact-icon-area">
             <div class="contact-icon">
@@ -315,6 +302,15 @@
             <div class="contact-icon-shadow"></div>
           </div>
         </div>
+        <h4 class="jordle-text">
+          Bored? Play
+          <a
+            href="https://hacktzke.github.io/jordle/"
+            target="_blank"
+            rel="noreferrer"
+            >JORDLE</a
+          >
+        </h4>
       </section>
     </div>
     <section id="animationBlock">
@@ -326,6 +322,5 @@
     </section>
 
     <script src="app.js"></script>
-    <script src="rocket-script.js"></script>
   </body>
 </html>

@@ -10,6 +10,8 @@ body {
   box-sizing: border-box;
   overflow: hidden;
   font-family: 'Special Elite', cursive;
+  line-height: 2rem;
+  letter-spacing: 0.1rem;
 }
 
 .loader {
@@ -113,18 +115,18 @@ body {
 }
 
 #contentBlock .heading {
-  /* font-size: 26px; */
+  margin-bottom: 30px;
 }
 
 #contentBlock .typewriter-text {
-  min-height: 18px;
+  min-height: 30px;
 }
 
 #contentBlock .content {
   margin: 0 20px;
 }
 
-#introContent {
+#introContent .intro-text {
   /* display: none; */
 }
 
@@ -184,25 +186,21 @@ body {
   justify-content: center;
 }
 
+/* #projectContent . */
+
 #projectsContent .project-icon {
   margin: 0 20px;
-  width: 150px;
-}
-
-#contactContent .jordle-text {
-  /* margin-top: 30px; */
+  width: 160px;
 }
 
 #contactContent .contact-details {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  /* padding: 20px 10px; */
 }
 
 #contactContent .contact-icon-area {
   position: relative;
-  /* margin: 10px 0; */
 }
 
 #contactContent .contact-icon {
@@ -219,6 +217,12 @@ body {
   transition: all 0.3s;
 }
 
+#contactContent .contact-icon a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
 #contactContent .contact-icon i {
   font-size: 2rem;
   position: relative;
@@ -226,19 +230,19 @@ body {
 }
 
 #contactContent .contact-icon .mail-icon {
-  color: #f9ba45;
+  color: #f9ce70;
 }
 
 #contactContent .contact-icon .linkedin-icon {
-  color: rgb(34, 34, 255);
+  color: #70d8f9;
 }
 
 #contactContent .contact-icon .github-icon {
-  color: purple;
+  color: #e386ff;
 }
 
 #contactContent .contact-icon .pin-icon {
-  color: red;
+  color: #ff8886;
 }
 
 #contactContent .contact-icon-shadow {
@@ -292,8 +296,6 @@ body {
   z-index: 20;
 }
 #character {
-  /* width: 3px; */
-
   transition: transform 300ms;
   transform: scaleX(-1);
 }
@@ -302,60 +304,6 @@ body {
   max-width: var(--animation-width);
   width: 100%;
   transition: all 300ms ease-out;
-}
-
-/* ROCKET STYLES */
-
-#rocketArea {
-  margin: auto;
-  position: relative;
-  width: 55px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-}
-
-#rocketBox {
-  position: absolute;
-  width: 50px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-#countdownNumber {
-  position: absolute;
-  top: 60px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Press Start 2P', sans-serif;
-  color: rgb(250, 74, 74);
-  font-size: 3rem;
-  z-index: 60;
-}
-#countdownText {
-  font-family: 'Press Start 2P', sans-serif;
-  line-height: 0.8rem;
-  color: rgb(90, 90, 90);
-  position: absolute;
-  bottom: 0px;
-  font-size: 0.5rem;
-}
-#rocket {
-  cursor: pointer;
-}
-
-#smoke {
-  margin-top: 50px;
-  width: 200px;
-}
-
-#launchpad {
-  position: absolute;
-  width: 95px;
-  opacity: 0.8;
 }
 
 #splatter {
@@ -371,7 +319,7 @@ body {
   z-index: -1;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 660px) {
   #projectsContent .projects-wrapper {
     flex-direction: column;
   }

@@ -24,7 +24,6 @@ let contentDegree = 0;
 let isCharacterMoving = false;
 let timer = null;
 let spinSpeed = 2;
-let frame = 1;
 let currentTouchPos;
 
 const introText = "Hi I'm Jeshua.";
@@ -32,8 +31,7 @@ const aboutText = 'I love tinkering across the whole stack.';
 const githubText = 'Github';
 const githubUrl = 'https://github.com/Hacktzke';
 const projectsText = `View more projects and games on my Github.`;
-const contactText =
-  " I'm always keen to hear about your project or business. Let's talk.";
+const contactText = " I'm always keen to chat!";
 
 const removeLoader = () => {
   loader.style.opacity = '0';
@@ -50,20 +48,6 @@ const generateText = (contentArea, text) => {
     typeWriter(contentArea, text);
   }, 1000);
 };
-
-// const typeWriter = (contentTag, text) => {
-//   let textIndex = 0;
-//   function type() {
-//     contentTag.textContent += text.charAt(textIndex);
-//     textIndex++;
-//     if (textIndex < text.length) {
-//       setTimeout(type, 25);
-//     } else {
-//     }
-//   }
-//   type();
-//   contentTag.isTyped = true;
-// };
 
 const typeWriter = (contentTag, text) => {
   let textIndex = 0;
@@ -88,7 +72,7 @@ const toggleContent = (selectedContent) => {
   projectsContent.style.display = 'none';
   contactContent.style.display = 'none';
   selectedContent.style.display = 'block';
-  profileImg.src = './images/profile.gif';
+  // profileImg.src = './images/profile.gif';
 };
 
 const checkContentDegree = () => {
@@ -211,7 +195,7 @@ addEventListener('wheel', (e) => {
 
 addEventListener('scroll', (e) => {
   !isCharacterMoving ? moveCharacter() : '';
-  if (e.deltaY < 0) {
+  if (e.deltaY > 0) {
     degree += spinSpeed;
     contentDegree += spinSpeed;
     character.style.transform = 'scaleX(1)';
@@ -241,13 +225,13 @@ window.addEventListener('touchmove', function (event) {
 });
 
 addEventListener('keydown', (e) => {
-  !isCharacterMoving ? moveCharacter() : '';
-
   if (e.code === 'ArrowUp') {
+    !isCharacterMoving ? moveCharacter() : '';
     degree += 4;
     contentDegree += 4;
     character.style.transform = 'scaleX(1)';
   } else if (e.code === 'ArrowDown') {
+    !isCharacterMoving ? moveCharacter() : '';
     degree -= 4;
     contentDegree -= 4;
     character.style.transform = 'scaleX(-1)';
