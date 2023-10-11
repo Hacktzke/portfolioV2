@@ -283,16 +283,16 @@ window.addEventListener('touchmove', function (event) {
       contentDegree -= spinSpeed;
       character.style.transform = 'scaleX(-1)';
     }
+
+    currentTouchPos.x = event.touches[0].clientX;
+    currentTouchPos.y = event.touches[0].clientY;
+
+    rotateEarth();
+    checkCharacterStopped();
+
+    // Update the rotation speed based on the swipe
+    rotationSpeed = deltaX / 10; // Adjust this value for more pronounced deceleration
   }
-
-  currentTouchPos.x = event.touches[0].clientX;
-  currentTouchPos.y = event.touches[0].clientY;
-
-  rotateEarth();
-  checkCharacterStopped();
-
-  // Update the rotation speed based on the swipe
-  rotationSpeed = deltaX / 10; // You can adjust the factor for the speed reduction
 });
 
 // Function to gradually slow down the rotation
@@ -303,7 +303,7 @@ function slowDownRotation() {
     contentDegree += rotationSpeed;
     character.style.transform = rotationSpeed > 0 ? 'scaleX(1)' : 'scaleX(-1)';
     rotateEarth();
-    rotationSpeed *= 0.95; // You can adjust the factor for speed reduction
+    rotationSpeed *= 0.95; // Adjust this value for more pronounced deceleration
     requestAnimationFrame(slowDownRotation);
   }
 }
