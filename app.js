@@ -174,6 +174,7 @@ const checkCharacterStopped = () => {
 
 addEventListener('load', () => {
   removeLoader();
+  profileImg.src = './images/profile.gif';
   resizeEarthAndContent();
 });
 
@@ -250,8 +251,6 @@ addEventListener('keyup', () => {
 
 window.addEventListener('touchmove', function (event) {
   !isCharacterMoving ? moveCharacter() : '';
-  console.log('TOUCH');
-
   // Calculate the change in both horizontal and vertical positions
   const deltaX = event.touches[0].clientX - currentTouchPos.x;
   const deltaY = event.touches[0].clientY - currentTouchPos.y;
