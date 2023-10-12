@@ -27,6 +27,8 @@ let spinSpeed = 4;
 let currentTouchPos = { x: 0, y: 0 }; // Initialize the current touch position
 let dogClickedAmount = 0;
 let isDogExploded = false;
+let profileClickedAmount = 0;
+let isProfileExploded = false;
 
 const introText = 'A Full Stack Developer based in Auckland, New Zealand.';
 const aboutText = 'I love tinkering across the whole stack.';
@@ -178,10 +180,6 @@ addEventListener('load', () => {
   resizeEarthAndContent();
 });
 
-profileImg.addEventListener('click', () => {
-  profileImg.src = './images/profile.gif';
-});
-
 addEventListener('resize', resizeEarthAndContent);
 
 addEventListener('wheel', (e) => {
@@ -288,9 +286,9 @@ window.addEventListener('touchmove', function (event) {
   checkCharacterStopped();
 });
 
-character.addEventListener('click', () => {
+character.addEventListener('click', (e) => {
   if (dogClickedAmount >= 10 && !isDogExploded) {
-    character.src = './images/explosion.gif';
+    character.src = './images/explosion2.gif';
     isDogExploded = true;
   } else if (!isDogExploded) {
     isRainbow = !isRainbow;
@@ -302,5 +300,15 @@ character.addEventListener('click', () => {
       character.style.paddingBottom = '0px';
     }
     dogClickedAmount++;
+  }
+});
+
+profileImg.addEventListener('click', () => {
+  if (profileClickedAmount >= 10 && !isProfileExploded) {
+    profileImg.src = './images/explosion.gif';
+    isProfileExploded = true;
+  } else if (!isProfileExploded) {
+    profileImg.src = './images/profile.gif';
+    profileClickedAmount++;
   }
 });
