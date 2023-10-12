@@ -23,12 +23,12 @@ let degree = 0;
 let contentDegree = 0;
 let isCharacterMoving = false;
 let timer = null;
-let spinSpeed = 2;
+let spinSpeed = 4;
 let currentTouchPos = { x: 0, y: 0 }; // Initialize the current touch position
 let dogClickedAmount = 0;
 let isDogExploded = false;
 
-const introText = "Hi I'm Jeshua.";
+const introText = 'A Full Stack Developer based in Auckland, New Zealand.';
 const aboutText = 'I love tinkering across the whole stack.';
 const githubText = 'Github';
 const githubUrl = 'https://github.com/Hacktzke';
@@ -44,13 +44,6 @@ const removeLoader = () => {
 
 // Text content functions
 
-const generateText = (contentArea, text) => {
-  contentArea.textContent = '';
-  setTimeout(() => {
-    typeWriter(contentArea, text);
-  }, 1000);
-};
-
 const typeWriter = (contentTag, text) => {
   let textIndex = 0;
   function type() {
@@ -63,7 +56,7 @@ const typeWriter = (contentTag, text) => {
   }
   setTimeout(() => {
     type();
-  }, 300);
+  }, 800);
   contentTag.isTyped = true;
 };
 
@@ -257,6 +250,7 @@ addEventListener('keyup', () => {
 
 window.addEventListener('touchmove', function (event) {
   !isCharacterMoving ? moveCharacter() : '';
+  console.log('TOUCH');
 
   // Calculate the change in both horizontal and vertical positions
   const deltaX = event.touches[0].clientX - currentTouchPos.x;
