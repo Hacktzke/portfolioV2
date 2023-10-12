@@ -25,6 +25,8 @@ let isCharacterMoving = false;
 let timer = null;
 let spinSpeed = 2;
 let currentTouchPos = { x: 0, y: 0 }; // Initialize the current touch position
+let dogClickedAmount = 0;
+let isDogExploded = false;
 
 const introText = "Hi I'm Jeshua.";
 const aboutText = 'I love tinkering across the whole stack.';
@@ -153,9 +155,11 @@ const rotateEarth = () => {
 };
 
 const moveCharacter = () => {
-  isRainbow
-    ? (character.src = './images/dog-rainbow.gif')
-    : (character.src = './images/dog.gif');
+  if (!isDogExploded) {
+    isRainbow
+      ? (character.src = './images/dog-rainbow.gif')
+      : (character.src = './images/dog.gif');
+  }
   isCharacterMoving = true;
 };
 
@@ -164,9 +168,11 @@ const checkCharacterStopped = () => {
     clearTimeout(timer);
   }
   timer = setTimeout(function () {
-    isRainbow
-      ? (character.src = './images/dog-rainbow-stopped.png')
-      : (character.src = './images/dog-stopped.png');
+    if (!isDogExploded) {
+      isRainbow
+        ? (character.src = './images/dog-rainbow-stopped.png')
+        : (character.src = './images/dog-stopped.png');
+    }
     isCharacterMoving = false;
   }, 150);
 };
@@ -290,12 +296,18 @@ window.addEventListener('touchmove', function (event) {
 });
 
 character.addEventListener('click', () => {
-  isRainbow = !isRainbow;
-  if (isRainbow) {
-    character.src = './images/dog-rainbow-stopped.png';
-    character.style.paddingBottom = '3%';
-  } else {
-    character.src = './images/dog-stopped.png';
-    character.style.paddingBottom = '0px';
+  if (dogClickedAmount >= 10 && !isDogExploded) {
+    character.src = './images/explosion.gif';
+    isDogExploded = true;
+  } else if (!isDogExploded) {
+    isRainbow = !isRainbow;
+    if (isRainbow) {
+      character.src = './images/dog-rainbow-stopped.png';
+      character.style.paddingBottom = '3%';
+    } else {
+      character.src = './images/dog-stopped.png';
+      character.style.paddingBottom = '0px';
+    }
+    dogClickedAmount++;
   }
 });
