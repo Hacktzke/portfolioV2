@@ -260,24 +260,24 @@ window.addEventListener('touchmove', function (event) {
     // Horizontal swipe detected
     if (deltaX > 0) {
       // User swiped to the right
-      degree += spinSpeed;
-      contentDegree += spinSpeed;
+      degree += 3;
+      contentDegree += 3;
       character.style.transform = 'scaleX(1)';
     } else {
       // User swiped to the left
-      degree -= spinSpeed;
-      contentDegree -= spinSpeed;
+      degree -= 3;
+      contentDegree -= 3;
       character.style.transform = 'scaleX(-1)';
     }
   } else {
     // Vertical swipe detected
     if (deltaY > 0) {
-      degree += spinSpeed;
-      contentDegree += spinSpeed;
+      degree += 3;
+      contentDegree += 3;
       character.style.transform = 'scaleX(1)';
     } else {
-      degree -= spinSpeed;
-      contentDegree -= spinSpeed;
+      degree -= 3;
+      contentDegree -= 3;
       character.style.transform = 'scaleX(-1)';
     }
   }
