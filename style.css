@@ -222,6 +222,7 @@ body {
 #contactContent .contact-icon a {
   display: flex;
   align-items: center;
+  justify-content: center;
   text-decoration: none;
 }
 
@@ -229,6 +230,7 @@ body {
   font-size: 2rem;
   position: relative;
   color: black;
+  margin-left: 2px;
 }
 
 #contactContent .contact-icon .mail-icon {
@@ -342,7 +344,7 @@ body {
   }
 
   #contactContent .contact-icon i {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 
   #contactContent .contact-icon-shadow {
