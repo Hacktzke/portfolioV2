@@ -23,7 +23,7 @@ let degree = 0;
 let contentDegree = 0;
 let isCharacterMoving = false;
 let timer = null;
-let spinSpeed = 2;
+let spinSpeed = 3;
 let currentTouchPos = { x: 0, y: 0 }; // Initialize the current touch position
 let dogClickedAmount = 0;
 let isDogExploded = false;
@@ -239,68 +239,68 @@ addEventListener('keyup', () => {
   checkCharacterStopped();
 });
 
-window.addEventListener(
-  'touchmove',
-  function (event) {
-    !isCharacterMoving ? moveCharacter() : '';
-    if (currentTouchPos < event.touches[0].clientY) {
-      degree += 4;
-      contentDegree += 4;
-      character.style.transform = 'scaleX(1)';
-    } else {
-      degree -= 4;
-      contentDegree -= 4;
-      character.style.transform = 'scaleX(-1)';
-    }
-    currentTouchPos = event.touches[0].clientY;
-    rotateEarth();
-    checkCharacterStopped();
-  },
-  { passive: true }
-);
-
 // window.addEventListener(
 //   'touchmove',
 //   function (event) {
 //     !isCharacterMoving ? moveCharacter() : '';
-//     // Calculate the change in both horizontal and vertical positions
-//     const deltaX = event.touches[0].clientX - currentTouchPos.x;
-//     const deltaY = event.touches[0].clientY - currentTouchPos.y;
-
-//     if (Math.abs(deltaX) > Math.abs(deltaY)) {
-//       // Horizontal swipe detected
-//       if (deltaX > 0) {
-//         // User swiped to the right
-//         degree += 3;
-//         contentDegree += 3;
-//         character.style.transform = 'scaleX(1)';
-//       } else {
-//         // User swiped to the left
-//         degree -= 3;
-//         contentDegree -= 3;
-//         character.style.transform = 'scaleX(-1)';
-//       }
+//     if (currentTouchPos < event.touches[0].clientY) {
+//       degree += spinSpeed;
+//       contentDegree += spinSpeed;
+//       character.style.transform = 'scaleX(1)';
 //     } else {
-//       // Vertical swipe detected
-//       if (deltaY > 0) {
-//         degree += 3;
-//         contentDegree += 3;
-//         character.style.transform = 'scaleX(1)';
-//       } else {
-//         degree -= 3;
-//         contentDegree -= 3;
-//         character.style.transform = 'scaleX(-1)';
-//       }
+//       degree -= spinSpeed;
+//       contentDegree -= spinSpeed;
+//       character.style.transform = 'scaleX(-1)';
 //     }
-
-//     currentTouchPos.x = event.touches[0].clientX;
-//     currentTouchPos.y = event.touches[0].clientY;
-
+//     currentTouchPos = event.touches[0].clientY;
 //     rotateEarth();
 //     checkCharacterStopped();
 //   },
 //   { passive: true }
 // );
+
+window.addEventListener(
+  'touchmove',
+  function (event) {
+    !isCharacterMoving ? moveCharacter() : '';
+    // Calculate the change in both horizontal and vertical positions
+    const deltaX = event.touches[0].clientX - currentTouchPos.x;
+    const deltaY = event.touches[0].clientY - currentTouchPos.y;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      // Horizontal swipe detected
+      if (deltaX > 0) {
+        // User swiped to the right
+        degree += 3;
+        contentDegree += 3;
+        character.style.transform = 'scaleX(1)';
+      } else {
+        // User swiped to the left
+        degree -= 3;
+        contentDegree -= 3;
+        character.style.transform = 'scaleX(-1)';
+      }
+    } else {
+      // Vertical swipe detected
+      if (deltaY > 0) {
+        degree += 3;
+        contentDegree += 3;
+        character.style.transform = 'scaleX(1)';
+      } else {
+        degree -= 3;
+        contentDegree -= 3;
+        character.style.transform = 'scaleX(-1)';
+      }
+    }
+
+    currentTouchPos.x = event.touches[0].clientX;
+    currentTouchPos.y = event.touches[0].clientY;
+
+    rotateEarth();
+    checkCharacterStopped();
+  },
+  { passive: true }
+);
 
 character.addEventListener('click', (e) => {
   if (dogClickedAmount >= 10 && !isDogExploded) {
