@@ -182,35 +182,43 @@ addEventListener('load', () => {
 
 addEventListener('resize', resizeEarthAndContent);
 
-addEventListener('wheel', (e) => {
-  !isCharacterMoving ? moveCharacter() : '';
-  if (e.deltaY < 0) {
-    degree += spinSpeed;
-    contentDegree += spinSpeed;
-    character.style.transform = 'scaleX(1)';
-  } else {
-    degree -= spinSpeed;
-    contentDegree -= spinSpeed;
-    character.style.transform = 'scaleX(-1)';
-  }
-  rotateEarth();
-  checkCharacterStopped();
-});
+addEventListener(
+  'wheel',
+  (e) => {
+    !isCharacterMoving ? moveCharacter() : '';
+    if (e.deltaY < 0) {
+      degree += spinSpeed;
+      contentDegree += spinSpeed;
+      character.style.transform = 'scaleX(1)';
+    } else {
+      degree -= spinSpeed;
+      contentDegree -= spinSpeed;
+      character.style.transform = 'scaleX(-1)';
+    }
+    rotateEarth();
+    checkCharacterStopped();
+  },
+  { passive: true }
+);
 
-addEventListener('scroll', (e) => {
-  !isCharacterMoving ? moveCharacter() : '';
-  if (e.deltaY > 0) {
-    degree += spinSpeed;
-    contentDegree += spinSpeed;
-    character.style.transform = 'scaleX(1)';
-  } else {
-    degree -= spinSpeed;
-    contentDegree -= spinSpeed;
-    character.style.transform = 'scaleX(-1)';
-  }
-  rotateEarth();
-  checkCharacterStopped();
-});
+addEventListener(
+  'scroll',
+  (e) => {
+    !isCharacterMoving ? moveCharacter() : '';
+    if (e.deltaY > 0) {
+      degree += spinSpeed;
+      contentDegree += spinSpeed;
+      character.style.transform = 'scaleX(1)';
+    } else {
+      degree -= spinSpeed;
+      contentDegree -= spinSpeed;
+      character.style.transform = 'scaleX(-1)';
+    }
+    rotateEarth();
+    checkCharacterStopped();
+  },
+  { passive: true }
+);
 
 addEventListener('keydown', (e) => {
   if (e.code === 'ArrowUp') {
@@ -247,44 +255,48 @@ addEventListener('keyup', () => {
 //   checkCharacterStopped();
 // });
 
-window.addEventListener('touchmove', function (event) {
-  !isCharacterMoving ? moveCharacter() : '';
-  // Calculate the change in both horizontal and vertical positions
-  const deltaX = event.touches[0].clientX - currentTouchPos.x;
-  const deltaY = event.touches[0].clientY - currentTouchPos.y;
+window.addEventListener(
+  'touchmove',
+  function (event) {
+    !isCharacterMoving ? moveCharacter() : '';
+    // Calculate the change in both horizontal and vertical positions
+    const deltaX = event.touches[0].clientX - currentTouchPos.x;
+    const deltaY = event.touches[0].clientY - currentTouchPos.y;
 
-  if (Math.abs(deltaX) > Math.abs(deltaY)) {
-    // Horizontal swipe detected
-    if (deltaX > 0) {
-      // User swiped to the right
-      degree += 3;
-      contentDegree += 3;
-      character.style.transform = 'scaleX(1)';
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      // Horizontal swipe detected
+      if (deltaX > 0) {
+        // User swiped to the right
+        degree += 3;
+        contentDegree += 3;
+        character.style.transform = 'scaleX(1)';
+      } else {
+        // User swiped to the left
+        degree -= 3;
+        contentDegree -= 3;
+        character.style.transform = 'scaleX(-1)';
+      }
     } else {
-      // User swiped to the left
-      degree -= 3;
-      contentDegree -= 3;
-      character.style.transform = 'scaleX(-1)';
+      // Vertical swipe detected
+      if (deltaY > 0) {
+        degree += 3;
+        contentDegree += 3;
+        character.style.transform = 'scaleX(1)';
+      } else {
+        degree -= 3;
+        contentDegree -= 3;
+        character.style.transform = 'scaleX(-1)';
+      }
     }
-  } else {
-    // Vertical swipe detected
-    if (deltaY > 0) {
-      degree += 3;
-      contentDegree += 3;
-      character.style.transform = 'scaleX(1)';
-    } else {
-      degree -= 3;
-      contentDegree -= 3;
-      character.style.transform = 'scaleX(-1)';
-    }
-  }
 
-  currentTouchPos.x = event.touches[0].clientX;
-  currentTouchPos.y = event.touches[0].clientY;
+    currentTouchPos.x = event.touches[0].clientX;
+    currentTouchPos.y = event.touches[0].clientY;
 
-  rotateEarth();
-  checkCharacterStopped();
-});
+    rotateEarth();
+    checkCharacterStopped();
+  },
+  { passive: true }
+);
 
 character.addEventListener('click', (e) => {
   if (dogClickedAmount >= 10 && !isDogExploded) {
